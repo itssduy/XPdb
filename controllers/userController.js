@@ -18,8 +18,16 @@ async function createUsernamePost(req, res) {
   res.redirect("/");
 }
 
+
+async function searchUsernameGET(req, res){
+  const search = req.query.search;
+  const usernames = await db.searchUsernames(search)
+  res.send(usernames);
+}
+
 module.exports = {
   getUsernames,
   createUsernameGet,
-  createUsernamePost
+  createUsernamePost,
+  searchUsernameGET,
 };
